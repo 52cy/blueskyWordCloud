@@ -23,7 +23,11 @@ export const login = async (identifier, password) => {
         const data = await response.json();
         return data; // contains accessJwt, did, handle, etc.
     } catch (error) {
-        console.error('Auth Error:', error);
+        console.error('Auth Error Details:', {
+            message: error.message,
+            stack: error.stack,
+            url: url
+        });
         throw error;
     }
 };

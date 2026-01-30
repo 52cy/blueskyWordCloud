@@ -17,8 +17,17 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/xrpc', createProxyMiddleware({
     target: 'https://bsky.social',
     changeOrigin: true,
-    secure: false, // In case of self-signed certs upstream (unlikely for bsky but safe)
-    logLevel: 'debug'
+    secure: false,
+    logLevel: 'debug',
+    onProxyReq: (proxyReq, req, res) => {
+        console.log(`[Proxy] Proxying ${req.method} request to: ${proxyReq.host}${proxyReq.path}`);
+    },
+    onProxyRes: (proxyRes, req, res) => {
+        console.log(`[Proxy] Received response from target: ${proxyRes.statusCode}`);
+    },
+    onError: (err, req, res) => {
+        console.error('[Proxy] Error:', err);
+    }
 }));
 
 // Handle SPA Routing: Return index.html for all other non-API routes
