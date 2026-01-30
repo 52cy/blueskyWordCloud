@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // Proxy /xrpc requests to Bluesky
 // This matches the setup in vite.config.js but for production
 app.use('/xrpc', createProxyMiddleware({
-    target: 'https://bsky.social',
+    target: 'https://bsky.social/xrpc',
     changeOrigin: true,
     secure: false,
     logLevel: 'debug',
