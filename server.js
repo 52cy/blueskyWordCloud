@@ -22,7 +22,7 @@ app.use('/xrpc', createProxyMiddleware({
 }));
 
 // Handle SPA Routing: Return index.html for all other non-API routes
-app.get('*', (req, res) => {
+app.get(/(.*)/, (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
