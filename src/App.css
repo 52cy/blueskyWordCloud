@@ -1,0 +1,10 @@
+/* Clean App css */
+.App {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a2e;
+  /* Dark Blue/Black to match Sea Horse theme */
+  color: #e0e7ff;
+}

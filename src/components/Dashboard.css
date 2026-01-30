@@ -1,0 +1,153 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* background-color: #f0f2f5; REMOVE override */
+  color: #e0e7ff;
+  /* Light text */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.header {
+  background: #233142;
+  color: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  /* Center controls by default */
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid #455a64;
+  min-height: 80px;
+}
+
+.header h1 {
+  /* Removed - keeping style just in case of revert, but unused */
+  margin: 0;
+  font-size: 1.5rem;
+  color: #0085ff;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 60px;
+  /* Always clear the fixed logo */
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.controls input {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  /* Dark text for readability */
+}
+
+.controls button {
+  background: #0085ff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.controls button:hover {
+  background: #0060df;
+}
+
+.stats {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+  /* Lighter for dark theme contrast */
+  align-items: center;
+  position: absolute;
+  /* Pinned to right by default */
+  right: 2rem;
+  white-space: nowrap;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.live {
+  color: #10b981;
+}
+
+/* Responsive - Fix overlapping on narrow screens */
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1rem;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .controls {
+    margin-left: 50px;
+    /* Still need to clear logo */
+    width: calc(100% - 60px);
+    flex-wrap: wrap;
+  }
+
+  .controls input {
+    width: 100%;
+    min-width: 0;
+    /* Allow shrinking */
+    flex: 1;
+  }
+
+  .stats {
+    position: static;
+    /* No longer absolute */
+    right: auto;
+    width: 100%;
+    justify-content: flex-start;
+    /* Align left with controls */
+    margin-left: 50px;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.visualization-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.placeholder {
+  color: #888;
+  font-size: 1.2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
